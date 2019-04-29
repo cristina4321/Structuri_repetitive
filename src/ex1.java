@@ -1,39 +1,26 @@
 public class ex1 {
 
+    //1. sa se scrie un program folosind o structura repetitiva, care sa afiseze urmatorul rezultat
+    //# ##  ###   ####   ###  ##  #
+
     public static void main(String[] args) {
 
- int countn = 0;
- Character caracter = '#';
+        char c = '#';
+        int j = 0, i, v;
 
-        for(int i=0;i<5;i++)
-        {
-            for(int j=0;j<i;j++)
-            {
-                System.out.print(caracter);
-
-
+        for (i = 0; i < 4; i++) {
+            for (j = 0; j <= i; j++) {
+                System.out.print(c);
             }
             System.out.print(" ");
-            countn ++;
-           // System.out.println(countn);
-
-            if (countn==5)
-            {
-                for (int k=3;k>0;k--)
-                {
-                    for(int n=0;n<k;n++)
-                    {
-                        System.out.print(caracter );
-                    }
-                    System.out.print(" ");
-                }
-            }
-
-
         }
 
 
-
-
+        for (int k = i - 1; k > 0; k--) {
+            for (v = 0; v < k; v++) {
+                System.out.print(c);
+            }
+            System.out.print(" ");
+        }
     }
 }
