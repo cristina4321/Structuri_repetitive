@@ -41,8 +41,7 @@ public class ex16 {
         System.out.println("Suma de pe pozitiile pare este: "+ s);
 
         /* sau varianta 2
-
-        int n =1234;
+          int n =1234;
         int countCifre = 0;
         int var = n;
         int sum = 0;
@@ -67,6 +66,5 @@ public class ex16 {
 
          */
     }
-
 }
 
