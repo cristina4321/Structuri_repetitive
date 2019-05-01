@@ -13,7 +13,6 @@ public class ex3 {
         System.out.println("Introduceti marime array:");
         int marime_array = sc.nextInt();
 
-
         int j=0;
         int n=0;
         int nr;
@@ -29,7 +28,6 @@ public class ex3 {
             array[j++] = nr;
         }
         System.out.println(" ");
-
 
         List <Integer> arrayNrImpare = new ArrayList<>();
 
@@ -56,12 +54,6 @@ public class ex3 {
             System.out.println("Nu s-a gasit maxim impar");
         }
 
-
-
-
-
-
     }
-
 
 }
