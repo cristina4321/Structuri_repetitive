@@ -14,24 +14,25 @@ public class ex19 {
         //exemplu : cnp = 1900510...... se va afisa mesajul "baiat nascut pe 10 mai 1990"
         //	  cnp = 2890205...... se va afisa mesajul "fata nascuta pe 5 februarie 1989"
 
-        String nrCNP = "2890205170029";
-        //  String nrCNP = "1900510170029";
-        int anExtras = Integer.parseInt(nrCNP.substring(1,3));
-        int luna = Integer.parseInt(nrCNP.substring(3,5));
-        int zi = Integer.parseInt(nrCNP.substring(5,7));
+        long cnp = 2890205170029L;
+        //long cnp = 1900510170029L;
 
-        int len = nrCNP.length();
-        int [] arrayCNP = new int[len];
-
-        for(int i=0;i<nrCNP.length();i++)
-        {
-            arrayCNP[i] = Integer.valueOf(nrCNP.charAt(i)+"");
+        long n1 = cnp;
+        long n2 = cnp ;
+        while (cnp!=0){
+            n2 = n1;
+            n1 = cnp;
+            cnp /= 1000000;
         }
 
-        String lunaCNP= " ";
+        int sex = (int)n2 / 1000000 % 10;
+        int an = (int)n2 / 10000 % 100;
+        int luna = (int)n2 / 100 % 100;
+        int zi = (int)n2  / 1 % 100;
+        String lunaCNP = " ", gen = " " ;
+        int anCNP = 0, err = 0;
 
-        switch (luna)
-        {
+        switch (luna) {
             case 1:
                 lunaCNP = "ianuarie";
                 break;
@@ -70,9 +71,23 @@ public class ex19 {
                 break;
         }
 
-        String gen=" ";
+        switch (sex) {
+            case 1: case 2:
+                anCNP=1900+an;
+                break;
+            case 3: case 4:
+                anCNP=1800+an;
+                break;
+            case 5: case 6:
+                anCNP=2000+an;
+                break;
+            case 7: case 8:
+                anCNP=1900+an;
+                break;
+        }
 
-        switch (arrayCNP[0])
+        switch (sex)  // am folosit switch si nu if-else nr par , impar
+        // pentru ca .. poate fi si un mod de validare, gen cnp-ul sa nu inceapa cu 0 sau 9 :).. va respecta strict case-urile :)
         {
             case 1: case 3: case 5: case 7:
             gen = "baiat";
@@ -80,36 +95,19 @@ public class ex19 {
             case 2: case 4: case 6: case 8:
             gen = "fata";
             break;
+
+            default:
+                err = 1;
         }
 
-        int anCNP =0;
-
-        switch (arrayCNP[0])
-        {
-            case 1: case 2:
-            anCNP=1900+anExtras;
-            break;
-            case 3: case 4:
-            anCNP=1800+anExtras;
-            break;
-            case 5: case 6:
-            anCNP=2000+anExtras;
-            break;
-            case 7: case 8:
-            anCNP=1900+anExtras;
-            break;
-
-        }
-
-        String rezultat = gen + " nascut pe " + zi + " " + lunaCNP + " " + anCNP;
         String data = zi + " " + lunaCNP + " " + anCNP;
-        if(gen=="fata")
-        {
-            System.out.println (gen + " nascuta pe " + data);
-        }
-        else
-        {
-            System.out.println (gen + " nascut pe " + data);
+
+        if(err!=1) {
+            if (gen == "fata") {
+                System.out.println(gen + " nascuta pe " + data);
+            } else {
+                System.out.println(gen + " nascut pe " + data);
+            }
         }
     }
 }
